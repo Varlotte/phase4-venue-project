@@ -31,8 +31,6 @@ Book tickets for events at our one-of-a-kind venue!
 # Data models:
 <img width="1318" alt="Screenshot 2023-10-13 at 3 54 07 PM" src="https://github.com/Varlotte/phase4-venue-project/assets/32116877/e55789fc-4204-4f1b-9007-f4ad211c6fcc">
 
-# Trello:
-
 # Wireframe for frontend:
 TBD
 
@@ -74,3 +72,7 @@ TBD
 * Potential “host my event” inquiry page (front end and POST)
 * Add another venue (as another table) potentially
 * About us component for the venue (look how cute we are)
+
+# Trello:
+<img width="1032" alt="Screenshot 2023-10-13 at 4 32 27 PM" src="https://github.com/Varlotte/phase4-venue-project/assets/32116877/7526efd2-4225-4bcb-8a53-708c1f363d19">
+
