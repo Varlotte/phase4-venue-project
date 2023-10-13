@@ -4,10 +4,13 @@
 Book tickets for events at our one-of-a-kind venue!
 
 ## CRUD Deliverables
-* C- create reservation for an event by buying a ticket
-* R- view all your reservations (from my tickets page)
-* U- update your reservation for an event (from my events update contact info)
-* D- cancel your reservation with a refund
+* C- users can create a reservation for an event by buying a ticket
+* R- users can view all their reservations (from My Tickets page)
+* U- users can update their reservation for an event
+* D- users can cancel their reservation with a refund
+
+# Data models:
+<img width="1318" alt="Screenshot 2023-10-13 at 3 54 07 PM" src="https://github.com/Varlotte/phase4-venue-project/assets/32116877/e55789fc-4204-4f1b-9007-f4ad211c6fcc">
 
 ## Many-to-many relationships:
 * One attendee goes to many events through reservations 
@@ -27,9 +30,6 @@ Book tickets for events at our one-of-a-kind venue!
 * Email needs "@"
 * Time must be between 0:00 and 23:59
 * Birthday must be after 10/13/2002 (or after 21, we're gonna build in a validation somehow?)
-
-# Data models:
-<img width="1318" alt="Screenshot 2023-10-13 at 3 54 07 PM" src="https://github.com/Varlotte/phase4-venue-project/assets/32116877/e55789fc-4204-4f1b-9007-f4ad211c6fcc">
 
 # Wireframe for frontend:
 TBD
