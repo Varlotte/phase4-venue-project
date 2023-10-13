@@ -71,7 +71,8 @@ TBD
 * Sort for calendar for event types
 * Potential “host my event” inquiry page (front end and POST)
 * Add another venue (as another table) potentially
-* About us component for the venue (look how cute we are)
+* About us component for the venue
+* Let users switch reservations for the same event on a different date
 
 # Trello:
 <img width="1032" alt="Screenshot 2023-10-13 at 4 32 27 PM" src="https://github.com/Varlotte/phase4-venue-project/assets/32116877/7526efd2-4225-4bcb-8a53-708c1f363d19">
