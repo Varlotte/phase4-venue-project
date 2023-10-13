@@ -32,7 +32,10 @@ Book tickets for events at our one-of-a-kind venue!
 * Birthday must be after 10/13/2002 (or after 21, we're gonna build in a validation somehow?)
 
 # Wireframe for frontend:
-TBD
+![Screenshot 2023-10-13 135622](https://github.com/Varlotte/phase4-venue-project/assets/137942550/4ee390a9-f26f-40d0-a25b-276cbc813374)
+![Screenshot 2023-10-13 135636](https://github.com/Varlotte/phase4-venue-project/assets/137942550/e57f116a-48d3-4246-af4e-abce2a02cf99)
+![Screenshot 2023-10-13 135649](https://github.com/Varlotte/phase4-venue-project/assets/137942550/06938977-82ac-4dd7-a053-e46d984192c0)
+
 
 # API Routes:
 * GET /events
@@ -76,4 +79,5 @@ TBD
 
 # Trello:
 <img width="1032" alt="Screenshot 2023-10-13 at 4 32 27 PM" src="https://github.com/Varlotte/phase4-venue-project/assets/32116877/7526efd2-4225-4bcb-8a53-708c1f363d19">
+
 
