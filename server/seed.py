@@ -56,6 +56,7 @@ if __name__ == '__main__':
         Event.query.delete()
         Attendee.query.delete()
         Reservation.query.delete()
+        # db.session.commit()
 
         print("Seeding attendees...")
         attendees = create_attendees()

@@ -15,7 +15,7 @@ from datetime import datetime, date
 # Views go here!
 class Attendees(Resource):
     def get(self):
-        attendees = [attendee.to_dict(rules=('-reservations',)) for attendee in Attendee.query.all()]
+        attendees = [attendee.to_dict(only=('name','id',)) for attendee in Attendee.query.all()]
         return make_response(attendees, 200)
     def post(self):
         data = request.json
@@ -50,10 +50,16 @@ class AttendeesByID(Resource):
     def patch(self, id):
         attendee = Attendee.query.filter_by(id = id).first()
         data = request.json
+        if data["birthday"]:
+            birthday = data["birthday"].split("-")
+            fixed_birthday = date(int(birthday[0]), int(birthday[1]), int(birthday[2]))
         if attendee:
             try:
                 for attr in data:
-                    setattr(attendee, attr, data[attr])
+                    if attr == "birthday":
+                        setattr(attendee, attr, fixed_birthday)
+                    else:
+                        setattr(attendee, attr, data[attr])
                 
                 db.session.add(attendee)
                 db.session.commit()
@@ -69,6 +75,8 @@ class AttendeesByID(Resource):
         if attendee:
             db.session.delete(attendee)
             db.session.commit()
+
+            return make_response({"message": "attendee was successfully deleted"}, 204)
         else:
             return make_response({"error": "No attendee was found"}, 404)
 api.add_resource(AttendeesByID, '/attendees/<int:id>')
@@ -78,14 +86,14 @@ class Events(Resource):
         events = [event.to_dict(rules=('-reservations',)) for event in Event.query.all()]
         return make_response(events, 200)
     def post(self):
-        data = request.data
+        data = request.json
         try:
             new_event = Event(
                 name = data["name"],
                 description = data["description"],
                 price = data["price"],
                 time = data["time"],
-                location = "Main Venue"
+                location = data["location"]
             )
             
             db.session.add(new_event)
@@ -98,7 +106,7 @@ api.add_resource(Events, '/events')
 
 class Reservations(Resource):
     def get(self):
-        reservations = [res.to_dict() for res in Reservation.query.all()]
+        reservations = [res.to_dict(only=('attendee.name', 'event.name', 'event.location', 'event.time', 'tickets',)) for res in Reservation.query.all()]
         return make_response(reservations, 200)
     def post(self):
         data = request.json
