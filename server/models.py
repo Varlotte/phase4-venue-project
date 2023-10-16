@@ -1,7 +1,7 @@
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import validates
-from datetime import *
+# from datetime import *
 
 from config import db
 
@@ -15,7 +15,7 @@ class Attendee(db.Model, SerializerMixin):
     name = db.Column(db.String)
     email = db.Column(db.String)
     password = db.Column(db.String)
-    birthday = db.Column(db.Datetime)
+    birthday = db.Column(db.DateTime)
 
 # relationship with reservations
     reservations = db.relationship(
@@ -47,13 +47,13 @@ class Attendee(db.Model, SerializerMixin):
 
 # to do: figure out how to automatically check datetime against current date
 # for now it's just the earliest date to be 21 as of 10/15
-    @validates('birthday')
-    def validate_birthday(self, key, birthday):
-        d1 = datetime.datetime(2002, 10, 15)
-        if birthday and birthday > d1:
-            return birthday
-        else:
-            raise ValueError("Must have valid birthday attribute")
+    # @validates('birthday')
+    # def validate_birthday(self, key, birthday):
+    #     d1 = datetime.datetime(2002, 10, 15)
+    #     if birthday and birthday > d1:
+    #         return birthday
+    #     else:
+    #         raise ValueError("Must have valid birthday attribute")
 
     def __repr__(self):
         return f'<Attendee {self.name}>'
@@ -64,9 +64,9 @@ class Reservation(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     tickets = db.Column(db.Integer)
-    ticket_quantity = db.Column(db.Integer)
+    # ticket_quantity = db.Column(db.Integer)
 
-    atendee_id = db.Column(db.Integer, db.ForeignKey('attendees.id'))
+    attendee_id = db.Column(db.Integer, db.ForeignKey('attendees.id'))
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
 
     # Add serialization rules
@@ -83,7 +83,7 @@ class Event(db.Model, SerializerMixin):
     name = db.Column(db.String)
     description = db.Column(db.String)
     price = db.Column(db.Integer)
-    time = db.Column(db.Integer)
+    time = db.Column(db.String)
     location = db.Column(db.String, default='Main Venue')
 
     # relationship with reservations
@@ -94,12 +94,12 @@ class Event(db.Model, SerializerMixin):
 
     # validations for time (if we use Strftime we can use hour:minute too)
     # to do: figure out how to do that
-    @validates('time')
-    def validate_time(self, key, time):
-        if time and 0 <= time <= 23:
-            return time
-        else:
-            raise ValueError("Must have valid time attribute")
+    # @validates('time')
+    # def validate_time(self, key, time):
+    #     if time and 0 <= time <= 23:
+    #         return time
+    #     else:
+    #         raise ValueError("Must have valid time attribute")
 
-    def __repr__(self):
-        return f'<Event {self.name}: {self.description}>'
+    # def __repr__(self):
+    #     return f'<Event {self.name}: {self.description}>'

@@ -31,6 +31,7 @@ def create_reservations(attendees, events):
             attendee_id = rc(attendees).id,
             event_id = rc(events).id,
         )
+        print(attendees[0].id)
         reservations.append(reservation)
     return reservations
 
@@ -62,14 +63,16 @@ if __name__ == '__main__':
         db.session.add_all(attendees)
         db.session.commit()
 
-        print("Seeding reservations...")
-        reservations = create_reservations()
-        db.session.add_all(reservations)
-        db.session.commit()
-
         print("Seeding events...")
         events = create_events()
         db.session.add_all(events)
         db.session.commit()
+
+        print("Seeding reservations...")
+        reservations = create_reservations(attendees, events)
+        db.session.add_all(reservations)
+        db.session.commit()
+
+        
 
         print("Done seeding :) ")
