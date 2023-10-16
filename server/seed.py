@@ -5,7 +5,7 @@ from random import randint, choice as rc
 
 # Remote library imports
 from faker import Faker
-
+from datetime import *
 # Local imports
 from app import app
 from models import db, Attendee, Reservation, Event
@@ -41,6 +41,7 @@ def create_events():
             name = fake.name(),
             description = fake.sentence(),
             price = 10,
+            event_date = date(randint(2024,2026), randint(1,12), randint(1,28)),
             time = randint(0,23),
             location = 'Main Venue',
         )
@@ -56,7 +57,7 @@ if __name__ == '__main__':
         Event.query.delete()
         Attendee.query.delete()
         Reservation.query.delete()
-        # db.session.commit()
+        db.session.commit()
 
         print("Seeding attendees...")
         attendees = create_attendees()
@@ -73,6 +74,12 @@ if __name__ == '__main__':
         db.session.add_all(reservations)
         db.session.commit()
 
+        # print("seeding...")
+        # new_at = Attendee(name = "Ser", email = "sergio@gmail", password = "password1", birthday = fake.date_of_birth(minimum_age = 21, maximum_age = 80))
+        # print(type(new_at.birthday))
+        # db.session.add(new_at)
+        # db.session.commit()
+        # print(type(new_at.birthday))
         
 
         print("Done seeding :) ")

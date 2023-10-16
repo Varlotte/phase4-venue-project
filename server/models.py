@@ -1,7 +1,7 @@
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.associationproxy import association_proxy
 from sqlalchemy.orm import validates
-# from datetime import *
+from datetime import *
 
 from config import db
 
@@ -15,7 +15,7 @@ class Attendee(db.Model, SerializerMixin):
     name = db.Column(db.String)
     email = db.Column(db.String)
     password = db.Column(db.String)
-    birthday = db.Column(db.DateTime)
+    birthday = db.Column(db.Date)
 
 # relationship with reservations
     reservations = db.relationship(
@@ -47,13 +47,15 @@ class Attendee(db.Model, SerializerMixin):
 
 # to do: figure out how to automatically check datetime against current date
 # for now it's just the earliest date to be 21 as of 10/15
-    # @validates('birthday')
-    # def validate_birthday(self, key, birthday):
-    #     d1 = datetime.datetime(2002, 10, 15)
-    #     if birthday and birthday > d1:
-    #         return birthday
-    #     else:
-    #         raise ValueError("Must have valid birthday attribute")
+    @validates('birthday')
+    def validate_birthday(self, key, birthday):
+        today = datetime.now().date()
+        difference = today - birthday
+        age_in_days = difference.days
+        if birthday and age_in_days >= 7665:
+            return birthday
+        else:
+            raise ValueError("Must have valid birthday attribute")
 
     def __repr__(self):
         return f'<Attendee {self.name}>'
@@ -83,6 +85,7 @@ class Event(db.Model, SerializerMixin):
     name = db.Column(db.String)
     description = db.Column(db.String)
     price = db.Column(db.Integer)
+    event_date = db.Column(db.Date)
     time = db.Column(db.Integer)
     location = db.Column(db.String, default='Main Venue')
 
