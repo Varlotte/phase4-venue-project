@@ -83,7 +83,7 @@ class Event(db.Model, SerializerMixin):
     name = db.Column(db.String)
     description = db.Column(db.String)
     price = db.Column(db.Integer)
-    time = db.Column(db.String)
+    time = db.Column(db.Integer)
     location = db.Column(db.String, default='Main Venue')
 
     # relationship with reservations
@@ -94,12 +94,12 @@ class Event(db.Model, SerializerMixin):
 
     # validations for time (if we use Strftime we can use hour:minute too)
     # to do: figure out how to do that
-    # @validates('time')
-    # def validate_time(self, key, time):
-    #     if time and 0 <= time <= 23:
-    #         return time
-    #     else:
-    #         raise ValueError("Must have valid time attribute")
+    @validates('time')
+    def validate_time(self, key, time):
+        if time and 0 <= time <= 23:
+            return time
+        else:
+            raise ValueError("Must have valid time attribute")
 
-    # def __repr__(self):
-    #     return f'<Event {self.name}: {self.description}>'
+    def __repr__(self):
+        return f'<Event {self.name}: {self.description}>'

@@ -31,7 +31,6 @@ def create_reservations(attendees, events):
             attendee_id = rc(attendees).id,
             event_id = rc(events).id,
         )
-        print(attendees[0].id)
         reservations.append(reservation)
     return reservations
 
@@ -42,7 +41,7 @@ def create_events():
             name = fake.name(),
             description = fake.sentence(),
             price = 10,
-            time =fake.time(),
+            time = randint(0,23),
             location = 'Main Venue',
         )
         events.append(event)
