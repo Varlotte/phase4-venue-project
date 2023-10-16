@@ -103,6 +103,8 @@ class Event(db.Model, SerializerMixin):
             return time
         else:
             raise ValueError("Must have valid time attribute")
+        
+    
 
     def __repr__(self):
         return f'<Event {self.name}: {self.description}>'

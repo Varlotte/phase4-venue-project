@@ -92,6 +92,7 @@ class Events(Resource):
                 name = data["name"],
                 description = data["description"],
                 price = data["price"],
+                event_date = data['event_date'],
                 time = data["time"],
                 location = data["location"]
             )
@@ -104,9 +105,33 @@ class Events(Resource):
             return make_response({"errors": ["validation errors"]}, 400)
 api.add_resource(Events, '/events')
 
+
+class EventsById(Resource):
+
+    def get(self, id):
+        event = Event.query.filter_by(id = id).first()
+
+        if event:
+            return make_response(event.to_dict(), 200)
+        else:
+            return make_response({"error": "No event was found"}, 404)
+        
+    def delete(self, id):
+        event = Event.query.filter_by(id = id).first()
+        if event:
+            db.session.delete(event)
+            db.session.commit()
+
+            return make_response({"Successfully deleted": True}, 204)
+        else:
+            return make_response({"error": "No event was found"}, 404)
+
+
+api.add_resource(EventsById, '/events/<int:id>')
+
 class Reservations(Resource):
     def get(self):
-        reservations = [res.to_dict(only=('attendee.name', 'event.name', 'event.location', 'event.time', 'tickets',)) for res in Reservation.query.all()]
+        reservations = [res.to_dict(only=('attendee.name', 'event.name','event.location', 'event_date', 'event.time', 'tickets', '')) for res in Reservation.query.all()]
         return make_response(reservations, 200)
     def post(self):
         data = request.json
