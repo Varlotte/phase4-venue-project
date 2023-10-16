@@ -92,7 +92,7 @@ class Event(db.Model, SerializerMixin):
 
     serialize_rules = ("-reservations.attendee",)
 
-    # to do: figure out how to do that
+    # validates time between 0 and 23
     @validates('time')
     def validate_time(self, key, time):
         if time is not None and 0 <= time <= 23:
@@ -100,7 +100,7 @@ class Event(db.Model, SerializerMixin):
         else:
             raise ValueError("Must have valid time attribute")
 
-     # validates date (between 1 and 28)
+    # validates date (between 1 and 28)
     @validates('date')
     def validate_date(self, key, date):
         if date is not None and 1 <= date <= 28:
