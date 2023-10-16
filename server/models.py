@@ -45,8 +45,6 @@ class Attendee(db.Model, SerializerMixin):
         else:
             raise ValueError("Must have valid email attribute")
 
-# to do: figure out how to automatically check datetime against current date
-# for now it's just the earliest date to be 21 as of 10/15
     @validates('birthday')
     def validate_birthday(self, key, birthday):
         today = datetime.now().date()
@@ -66,7 +64,6 @@ class Reservation(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     tickets = db.Column(db.Integer)
-    # ticket_quantity = db.Column(db.Integer)
 
     attendee_id = db.Column(db.Integer, db.ForeignKey('attendees.id'))
     event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
@@ -95,16 +92,21 @@ class Event(db.Model, SerializerMixin):
 
     serialize_rules = ("-reservations.attendee",)
 
-    # validations for time (if we use Strftime we can use hour:minute too)
     # to do: figure out how to do that
     @validates('time')
     def validate_time(self, key, time):
-        if time and 0 <= time <= 23:
+        if time is not None and 0 <= time <= 23:
             return time
         else:
             raise ValueError("Must have valid time attribute")
-        
-    
+
+     # validates date (between 1 and 28)
+    @validates('date')
+    def validate_date(self, key, date):
+        if date is not None and 1 <= date <= 28:
+            return date
+        else:
+            raise ValueError("Must have valid date attribute")
 
     def __repr__(self):
         return f'<Event {self.name}: {self.description}>'
