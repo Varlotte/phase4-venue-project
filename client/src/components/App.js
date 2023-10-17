@@ -7,8 +7,20 @@ import Navbar from "./NavBar";
 import Home from "./Home";
 import CreateAccount from "./CreateAcct";
 import Login from "./Login";
+import EventsList from "./EventsList";
 
 function App() {
+  const [eventsList, setEventsList] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5555/events")
+      .then((r) => r.json())
+      .then((events) => {
+        setEventsList(events);
+      });
+  }, []);
+
+
   return (
     <div>
       <BrowserRouter>
@@ -25,6 +37,8 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter>
+      <h1>Venue Project</h1>
+      <EventsList events={eventsList} selectEvent={selectEvent}/>
     </div>
   );
 }
