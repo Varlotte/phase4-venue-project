@@ -26,7 +26,7 @@ function App() {
   return (
     <div>
       <h1>Venue Project</h1>
-      <EventsList events={eventsList} />
+      <EventsList events={eventsList} selectEvent={selectEvent}/>
     </div>
   );
 }
