@@ -5,8 +5,8 @@ import { Avatar, Card } from 'antd';
 
 function EventCard({event}) {
     const { Meta } = Card;
-
-
+    //https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQxCsv8O-kQGCaExouybCEksMVouT9eLco8g&usqp=CAU
+    //https://www.wric.com/wp-content/uploads/sites/74/2022/07/IMG_9274.jpeg?strip=1
     return (
         <div>
         <Card
@@ -14,7 +14,7 @@ function EventCard({event}) {
             cover={
             <img
                 alt="example"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQxCsv8O-kQGCaExouybCEksMVouT9eLco8g&usqp=CAU"
+                src={event.image}
             />
             }
             actions={[
