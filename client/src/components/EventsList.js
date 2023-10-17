@@ -7,7 +7,7 @@ function EventsList({events}) {
 
 
     return (
-        <div>
+        <div id="Cards">
             {eventsCards}
         </div>
     )

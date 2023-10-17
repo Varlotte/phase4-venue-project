@@ -5,3 +5,12 @@
   --text: hsla(0, 0%, 100%, 0.88);
 }
 
+#Cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: center;
+  display: flex;
+  padding: 30px;
+  gap: 15px;
+  
+}
