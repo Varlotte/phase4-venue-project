@@ -36,6 +36,7 @@ def create_reservations(attendees, events):
 
 def create_events():
     events = []
+    images = ['https://www.wric.com/wp-content/uploads/sites/74/2022/07/IMG_9274.jpeg?strip=1', 'https://static.vecteezy.com/system/resources/previews/003/243/912/non_2x/happy-halloween-party-background-free-vector.jpg', 'https://ilaniresort.com/content/dam/ilani/Images/Festivals/Brewfest/Carousel-ilani_Brewfest-1440x620.jpg']
     for _ in range(5):
         event = Event(
             name = fake.name(),
@@ -44,6 +45,7 @@ def create_events():
             event_date = date(randint(2024,2026), randint(1,12), randint(1,28)),
             time = randint(0,23),
             location = 'Main Venue',
+            image = rc(images)
         )
         events.append(event)
     return events

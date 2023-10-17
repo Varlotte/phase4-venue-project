@@ -94,7 +94,8 @@ class Events(Resource):
                 price = data["price"],
                 event_date = data['event_date'],
                 time = data["time"],
-                location = data["location"]
+                location = data["location"],
+                image = data["image"]
             )
             
             db.session.add(new_event)
@@ -131,7 +132,7 @@ api.add_resource(EventsById, '/events/<int:id>')
 
 class Reservations(Resource):
     def get(self):
-        reservations = [res.to_dict(only=('attendee.name', 'event.name','event.location', 'event_date', 'event.time', 'tickets', '')) for res in Reservation.query.all()]
+        reservations = [res.to_dict(only=('attendee.name', 'event.name', 'event.image', 'event.location', 'event_date', 'event.time', 'tickets', '')) for res in Reservation.query.all()]
         return make_response(reservations, 200)
     def post(self):
         data = request.json

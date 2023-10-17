@@ -85,6 +85,7 @@ class Event(db.Model, SerializerMixin):
     event_date = db.Column(db.Date)
     time = db.Column(db.Integer)
     location = db.Column(db.String, default='Main Venue')
+    image = db.Column(db.String, default = 'https://www.wric.com/wp-content/uploads/sites/74/2022/07/IMG_9274.jpeg?strip=1')
 
     # relationship with reservations
     reservations = db.relationship(
