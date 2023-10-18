@@ -22,7 +22,7 @@ function App() {
           <Route path="/contact-page">
             <Contact />
           </Route>
-          <Route path="/signin">
+          <Route path="/login">
             <Login />
           </Route>
           <Route path="/acctdash">
