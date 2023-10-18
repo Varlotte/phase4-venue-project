@@ -29,7 +29,7 @@ Book tickets for events at our one-of-a-kind venue!
 * Password can't be empty string
 * Email needs "@"
 * Time must be between 0:00 and 23:59
-* Birthday must be after 10/13/2002 (or after 21, we're gonna build in a validation somehow?)
+* Birthday must pass an over-21 check
 
 # Wireframe for frontend:
 ![Screenshot 2023-10-13 135622](https://github.com/Varlotte/phase4-venue-project/assets/137942550/4ee390a9-f26f-40d0-a25b-276cbc813374)
@@ -47,21 +47,28 @@ Book tickets for events at our one-of-a-kind venue!
 * POST /attendees/<int:id>
 * DELETE /attendees/<int:id>
 * PATCH /attendees/<int:id>
+* POST /login
 
-# Frontend Component Routing:
-### Calendar
+# Frontend Component Routing (tentative):
+### Homepage
 * GET /events
-* GET /events/<int:id>
+* GET /events/${eventID}
 ### Login page
-* GET /attendees/<int:id> (also passed to acct)
+* POST /login
 ### My Account
+* path: /acctdash
 * GET /reservations/<int:id>
 * DELETE /reservations/<int:id>
-* POST /attendees/<int:id>
+* POST /signup
 * DELETE /attendees/<int:id>
 * PATCH /attendees/<int:id>
 ### Reservation form
 * POST /reservations/<int:id>
+### NavBar
+* /contact-page
+* /signup
+* /login
+* / (home)
 
 # Serialize Rules:
 * ("-reservations.attendee" ,)
