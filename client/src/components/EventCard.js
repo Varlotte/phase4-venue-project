@@ -7,12 +7,17 @@ import {
 } from "@ant-design/icons";
 import { Avatar, Card } from "antd";
 
-function EventCard({ event }) {
+function EventCard({ event, selectEvent }) {
   const { Meta } = Card;
+
+  function handleClick() {
+    selectEvent(event.id)
+  }
 
   return (
     <div>
       <Card
+        onClick={handleClick}
         style={{ height: 500, width: 300 }}
         cover={
           <img

@@ -12,9 +12,9 @@ function FullEventCard({selectedEvent}) {
                     <h4>{selectedEvent.description}</h4>
                     <h4>{selectedEvent.event_date}</h4>
                     <h4>{selectedEvent.location}</h4>
-                    <h4>${selectedEvent.price}.00 Fee</h4>
+                    <h4>${selectedEvent.price + ".00 Fee"}</h4>
                     <h4>
-                        {selectedEvent.time > 12? <h1>{selectedEvent.time -12}:00 pm</h1>: <h4>{selectedEvent.time}:00 am</h4>}
+                        {selectedEvent.time > 12? <h1>{(selectedEvent.time -12) + ":00pm"}</h1>: <h4>{selectedEvent.time + ":00 am"}</h4>}
                     </h4>
                 </div>
             </Card>
@@ -22,4 +22,4 @@ function FullEventCard({selectedEvent}) {
     )
 }
 
-// export default FullEventCard
+export default FullEventCard
