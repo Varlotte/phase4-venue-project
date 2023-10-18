@@ -50,6 +50,7 @@ api.add_resource(Attendees, '/attendees')
 class Login(Resource):
     def post(self):
         data = request.json
+        print(data["email"])
         attendee = Attendee.query.filter_by(email=data["email"]).first()
         if attendee is None:
             return make_response({"error": "user not found"}, 404)

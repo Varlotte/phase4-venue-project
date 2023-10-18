@@ -16,7 +16,7 @@ const Login = () => {
         Login
       </h1>
       <Formik
-        initialValues={{ firstName: "", lastName: "", email: "" }}
+        initialValues={{ email: "", password: "" }}
         validationSchema={Yup.object({
           email: Yup.string()
             .email("Invalid email address")
@@ -29,7 +29,12 @@ const Login = () => {
           setTimeout(() => {
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
+            // fetch(`http://127.0.0.1:5555/login`, values).then((r) => r.json());
+            //make this a post request somehow aaaaa
+            // console.log(values);
+            // .then(navigate("/acctdash"));
             // navigate("/acctdash"); how do I useNavigate to redirect on submit to dashboard?
+            //somewhere in here is an api call to /login
           }, 400);
         }}
       >
