@@ -5,6 +5,8 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navbar from "./NavBar";
 import Home from "./Home";
+import CreateAccount from "./CreateAcct";
+import Login from "./Login";
 
 function App() {
   return (
@@ -12,6 +14,12 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Switch>
+          <Route path="/acct/new">
+            <CreateAccount />
+          </Route>
+          <Route path="/acct/login">
+            <Login />
+          </Route>
           <Route path="/">
             <Home />
           </Route>
