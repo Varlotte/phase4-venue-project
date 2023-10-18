@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Avatar, Card } from 'antd';
+import ReservationForm from "./ReservationForm";
 
 function FullEventCard({selectedEvent}) {
     console.log(selectedEvent)
@@ -18,6 +19,7 @@ function FullEventCard({selectedEvent}) {
                     </h4>
                 </div>
             </Card>
+            <ReservationForm />
         </div>
     )
 }
