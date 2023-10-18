@@ -52,6 +52,7 @@ class Login(Resource):
         data = request.json
         print(data["email"])
         attendee = Attendee.query.filter_by(email=data["email"]).first()
+        print(attendee)
         if attendee is None:
             return make_response({"error": "user not found"}, 404)
         elif attendee.password != data["password"]:

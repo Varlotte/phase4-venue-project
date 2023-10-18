@@ -1,9 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 const Login = () => {
+  const history = useHistory();
+
   return (
     <div>
       <h1
@@ -35,10 +37,17 @@ const Login = () => {
               body: JSON.stringify(values),
             })
               .then((res) => res.json())
-              .then((data) => console.log(data));
-            console.log("Received values of form: ", values);
-            // .then(navigate("/acctdash"));
-            // navigate("/acctdash"); how do I useNavigate to redirect on submit to dashboard?
+              .then((data) => {
+                console.log(data);
+                if (data.id) {
+                  window.sessionStorage.setItem("currentUser", data.id);
+                  //sets current logged in user id so any other component can use it
+                  //user id for the rest of the app is going to be sessionStorage.getItem('currentUser')
+                  history.push("/acctdash");
+                } else {
+                  alert("Login is bad.");
+                }
+              });
           }, 400);
         }}
       >
