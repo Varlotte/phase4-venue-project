@@ -15,11 +15,15 @@
   
 }
 
+/* Navbar */
 .navbar {
   overflow: hidden;
   background-color: #19054a;
 }
+
+/* Links css */
 .navbar a {
+
   float: right;
   display: block;
   color: #f2f2f2;
@@ -33,3 +37,42 @@
   background-color: #ddd;
   color: #19054a;
 }
+
+.login-form {
+  margin: 0 auto;
+  max-width: 400px;
+  position: relative;
+  justify-content: center;
+  padding-top: 20vw;
+}
+
+.login-form-forgot {
+  float: right;
+}
+.ant-col-rtl .login-form-forgot {
+  float: left;
+}
+.login-form-button {
+  width: 100%;
+}
+
+.signup-layout-sider {
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+    line-height: 120px;
+    height: 50vw;
+    width: 50vw;
+    background-color: white;
+}
+
+.signup-layout {
+    /* text-align: center; */
+    margin: 0 auto;
+    height: 50vw;
+    width: 50vw;
+    line-height: 120px;
+    color: #fff;
+    background-color: #f0cea3;
+}
+

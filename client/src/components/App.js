@@ -6,7 +6,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navbar from "../layout/NavBar";
 import Home from "../layout/Home";
 import Contact from '../layout/Contact';
-import CreateAccount from "../layout/CreateAcct";
+import Signup from "../layout/Signup";
 import Login from "../layout/Login";
 
 function App() {
@@ -18,13 +18,13 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Switch>
-          <Route path="/acct/new">
-            <CreateAccount />
+          <Route path="/signup">
+            <Signup />
           </Route>
           <Route path="/contact-page">
             <Contact />
           </Route>
-          <Route path="/acct/login">
+          <Route path="/signin">
             <Login />
           </Route>
           <Route path="/">
