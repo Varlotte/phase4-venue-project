@@ -1,32 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 //CHANGED Switch to Routes - Sergio 10/17
-import { Routes, Route } from "react-router-dom";
-import EventsList from "./EventsList";
+//changed it back to switch because routes is legacy code and it wasn't running- charlotte 10/17
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Navbar from "./NavBar";
+import Home from "./Home";
+import CreateAccount from "./CreateAcct";
+import Login from "./Login";
 
 function App() {
-  const [eventsList, setEventsList] = useState([]);
-
-  // since we have proxy in our package.json can we just do fetch("/events")?
-  //"http://127.0.0.1:5555/events" Commented out so we can put it back if it doesn't work
-  //nvm it did not like that and I had to change it back (c, 10/17)
-
-  useEffect(() => {
-    fetch("http://127.0.0.1:5555/events")
-      .then((r) => r.json())
-      .then((events) => {
-        setEventsList(events);
-      });
-  }, []);
-
-  console.log(eventsList);
-
-  const yo = ["hi"];
-
   return (
     <div>
-      <h1>Venue Project</h1>
-      <EventsList events={eventsList} />
+      <BrowserRouter>
+        <Navbar />
+        <Switch>
+          <Route path="/acct/new">
+            <CreateAccount />
+          </Route>
+          <Route path="/acct/login">
+            <Login />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
