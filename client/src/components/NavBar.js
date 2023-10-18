@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const navbarStyle = {
@@ -22,15 +22,15 @@ function Navbar() {
 
   return (
     <div style={navbarStyle}>
-      <NavLink to="/" style={linkStyle}>
+      <Link to="/" style={linkStyle}>
         Home
-      </NavLink>
-      <NavLink to="/acct/new" style={linkStyle}>
+      </Link>
+      <Link to="/acct/new" style={linkStyle}>
         Create Account
-      </NavLink>
-      <NavLink to="/acct/login" style={linkStyle}>
+      </Link>
+      <Link to="/acct/login" style={linkStyle}>
         Log In
-      </NavLink>
+      </Link>
     </div>
   );
 }
