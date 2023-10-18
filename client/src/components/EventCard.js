@@ -1,7 +1,11 @@
 import React from "react";
 
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import { Avatar, Card } from 'antd';
+import {
+  EditOutlined,
+  EllipsisOutlined,
+  SettingOutlined,
+} from "@ant-design/icons";
+import { Avatar, Card } from "antd";
 
 function EventCard({event, selectEvent}) {
     const { Meta } = Card;
@@ -27,19 +31,19 @@ function EventCard({event, selectEvent}) {
             // <SettingOutlined key="setting" />,
             // <EditOutlined key="edit" />,
             // <EllipsisOutlined key="ellipsis" />,
-            ]}
-            >
-            <div>
-                <h2>Event: {event.name}</h2>
-                <h3>Description: {event.description}</h3>
-                <h3>Date: {event.event_date} Time: {event.time}:00</h3>
-            </div>
-        </Card>
-
-
-
+          ]
+        }
+      >
+        <div>
+          <h2>Event: {event.name}</h2>
+          <h3>Description: {event.description}</h3>
+          <h3>
+            Date: {event.event_date} Time: {event.time}:00
+          </h3>
         </div>
-    )
+      </Card>
+    </div>
+  );
 }
 
-export default EventCard
+export default EventCard;
