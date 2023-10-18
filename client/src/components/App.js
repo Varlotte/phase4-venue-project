@@ -9,6 +9,9 @@ import CreateAccount from "./CreateAcct";
 import Login from "./Login";
 
 function App() {
+
+  console.log("PLEASEEEEEEEE")
+  
   return (
     <div>
       <BrowserRouter>
