@@ -3,18 +3,18 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
   const navbarStyle = {
-    backgroundColor: "#1E90FF", // Washington DC-themed blue color
+    backgroundColor: "#1E90FF",
     padding: "14px",
     height: "60px",
     display: "flex",
     gap: "25px",
-    justifyContent: "center", // Center the content horizontally
-    alignItems: "center", // Center the content vertically
+    justifyContent: "center",
+    alignItems: "center",
   };
 
   const linkStyle = {
     textDecoration: "none",
-    color: "#fff", // White text color
+    color: "#fff",
     margin: "0 10px",
     fontSize: "22px",
     fontWeight: "bold",
@@ -25,11 +25,11 @@ function Navbar() {
       <NavLink to="/" style={linkStyle}>
         Home
       </NavLink>
-      <NavLink to="/museums" style={linkStyle}>
-        Museums
+      <NavLink to="/acct/new" style={linkStyle}>
+        Create Account
       </NavLink>
-      <NavLink to="/museums/new" style={linkStyle}>
-        Add Museum
+      <NavLink to="/acct/login" style={linkStyle}>
+        Log In
       </NavLink>
     </div>
   );
