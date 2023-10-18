@@ -14,3 +14,22 @@
   gap: 15px;
   
 }
+
+.navbar {
+  overflow: hidden;
+  background-color: #19054a;
+}
+.navbar a {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Links - change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: #19054a;
+}

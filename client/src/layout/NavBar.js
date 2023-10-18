@@ -2,34 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
-  const navbarStyle = {
-    backgroundColor: "#1E90FF",
-    padding: "14px",
-    height: "60px",
-    display: "flex",
-    gap: "25px",
-    justifyContent: "center",
-    alignItems: "center",
-  };
 
-  const linkStyle = {
-    textDecoration: "none",
-    color: "#fff",
-    margin: "0 10px",
-    fontSize: "22px",
-    fontWeight: "bold",
-  };
 
   return (
-    <div style={navbarStyle}>
-      <Link to="/" style={linkStyle}>
-        Home
+    <div className ='navbar'>
+      <Link to="/contact-page">
+      Contact Us
       </Link>
-      <Link to="/acct/new" style={linkStyle}>
+      <Link to="/acct/new">
         Create Account
       </Link>
-      <Link to="/acct/login" style={linkStyle}>
+      <Link to="/acct/login">
         Log In
+      </Link>
+      <Link to="/">
+        Home
       </Link>
     </div>
   );

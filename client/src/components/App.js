@@ -5,8 +5,9 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navbar from "../layout/NavBar";
 import Home from "../layout/Home";
+import Contact from '../layout/Contact';
 import CreateAccount from "./CreateAcct";
-import Login from "./Login";
+import Login from "../layout/Login";
 
 function App() {
 
@@ -19,6 +20,9 @@ function App() {
         <Switch>
           <Route path="/acct/new">
             <CreateAccount />
+          </Route>
+          <Route path="/contact-page">
+            <Contact />
           </Route>
           <Route path="/acct/login">
             <Login />
