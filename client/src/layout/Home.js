@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import EventsList from "./EventsList";
+import EventsList from "../components/EventsList";
 
 function Home() {
   const [eventsList, setEventsList] = useState([]);
