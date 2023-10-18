@@ -6,7 +6,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navbar from "../layout/NavBar";
 import Home from "../layout/Home";
 import Contact from '../layout/Contact';
-import CreateAccount from "./CreateAcct";
+import CreateAccount from "../layout/CreateAcct";
 import Login from "../layout/Login";
 
 function App() {
