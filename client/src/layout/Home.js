@@ -7,7 +7,7 @@ function Home() {
   const [currentEvent, setCurrentEvent] = useState({id: "", name: "", price: "", description: "", event_date: "", time: "", location: "", reservations: " "})
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5555/events")
+    fetch("/events")
       .then((r) => r.json())
       .then((events) => {
         setEventsList(events);
