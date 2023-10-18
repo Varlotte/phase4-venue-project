@@ -14,7 +14,13 @@ function EventCard({ event }) {
     <div>
       <Card
         style={{ height: 500, width: 300 }}
-        cover={<img alt="example" src={event.image} />}
+        cover={
+          <img
+            alt="example"
+            src={event.image}
+            style={{ "object-fit": "cover", height: "200px" }}
+          />
+        }
         actions={
           [
             // <SettingOutlined key="setting" />,
