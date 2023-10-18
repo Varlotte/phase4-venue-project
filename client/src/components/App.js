@@ -5,14 +5,12 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navbar from "../layout/NavBar";
 import Home from "../layout/Home";
-import Contact from '../layout/Contact';
+import Contact from "../layout/Contact";
 import Signup from "../layout/Signup";
 import Login from "../layout/Login";
+import AcctDash from "../layout/AcctDash";
 
 function App() {
-
-  
-
   return (
     <div>
       <BrowserRouter>
@@ -26,6 +24,9 @@ function App() {
           </Route>
           <Route path="/signin">
             <Login />
+          </Route>
+          <Route path="/acctdash">
+            <AcctDash />
           </Route>
           <Route path="/">
             <Home />
