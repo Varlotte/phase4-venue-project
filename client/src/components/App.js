@@ -11,7 +11,7 @@ import Login from "../layout/Login";
 
 function App() {
 
-  console.log("PLEASEEEEEEEE")
+  
 
   return (
     <div>
