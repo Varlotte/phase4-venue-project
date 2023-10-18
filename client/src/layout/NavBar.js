@@ -9,10 +9,10 @@ function Navbar() {
       <Link to="/contact-page">
       Contact Us
       </Link>
-      <Link to="/acct/new">
-        Create Account
+      <Link to="/signup">
+        Signup
       </Link>
-      <Link to="/acct/login">
+      <Link to="/signin">
         Log In
       </Link>
       <Link to="/">
