@@ -60,7 +60,7 @@
     text-align: center;
     margin: 0 auto;
     color: #fff;
-    line-height: 120px;
+    line-height: 100px;
     height: 50vw;
     width: 50vw;
     background-color: white;
@@ -69,10 +69,26 @@
 .signup-layout {
     /* text-align: center; */
     margin: 0 auto;
-    height: 50vw;
+    height: auto;
     width: 50vw;
-    line-height: 120px;
+    line-height: 100px;
     color: #fff;
-    background-color: #f0cea3;
+    background-color: #f9f3ea;
+}
+
+#normal_login {
+  height: fit-content;
+  padding: 14px 16px;
+}
+
+.content {
+  color: black;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-stretch: condensed;
+
+}
+
+.ant-space-item {
+  object-fit: cover;
 }
 
