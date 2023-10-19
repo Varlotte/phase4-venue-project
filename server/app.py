@@ -202,6 +202,20 @@ class ReservationId(Resource):
         else:
             return make_response({"error": "No event was found"}, 404)
 
+    def patch(self, id):
+        reservation = Reservation.query.filter_by(id=id).first()
+        if not reservation:
+            return make_response({"error": "Reservation not found"}, 404)
+        try:
+            for key in request.json:
+                setattr(reservation, key, request.json[key])
+            db.session.add(reservation)
+            db.session.commit()
+            return make_response(reservation.to_dict(rules=("-attendees",)), 202)
+        except ValueError as e:
+            print(e)
+            return make_response({"errors": ["validation errors"]}, 400)
+
 
 api.add_resource(ReservationId, '/reservations/<int:id>')
 
