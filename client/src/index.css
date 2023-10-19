@@ -5,15 +5,20 @@
   --text: hsla(0, 0%, 100%, 0.88);
 }
 
-#Cards {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+#CardsContainer {
+  /* display: grid;
+  grid-template-columns: repeat(4, 1fr);
   justify-content: center;
-  display: flex;
   padding: 30px;
-  gap: 15px;
+  gap: 15px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  overflow-x: auto;
   
 }
+
 
 /* Navbar */
 .navbar {
@@ -92,3 +97,11 @@
   object-fit: cover;
 }
 
+#cardTitle {
+  color: black;
+  font-size: 50px;
+}
+
+.cardDescriptions {
+  color: black;
+}

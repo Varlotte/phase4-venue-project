@@ -5,10 +5,19 @@ import ReservationForm from "./ReservationForm";
 function FullEventCard({selectedEvent}) {
     console.log(selectedEvent)
     return (
-        <div>
-            <Card>
+        <div class = "Card"> 
+            <Card
+                style={{}}
+                cover={
+                    <img
+                        alt="example"
+                        src={selectedEvent.image}
+                        style={{ "object-fit": "cover", height: "500px", width: "1000px" }}
+                    />
+                }
+            >
                 <div>
-                    <img src={selectedEvent.image}/>
+                    {/* <img src={selectedEvent.image}/> */}
                     <h4>{selectedEvent.name}</h4>
                     <h4>{selectedEvent.description}</h4>
                     <h4>{selectedEvent.event_date}</h4>
@@ -19,7 +28,7 @@ function FullEventCard({selectedEvent}) {
                     </h4>
                 </div>
             </Card>
-            <ReservationForm />
+            <ReservationForm eventId={selectedEvent.id}/>
         </div>
     )
 }
