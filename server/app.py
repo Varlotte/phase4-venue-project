@@ -191,6 +191,21 @@ class Reservations(Resource):
 api.add_resource(Reservations, '/reservations')
 
 
+class ReservationId(Resource):
+    def delete(self, id):
+        reservation = Reservation.query.filter_by(id=id).first()
+        if reservation:
+            db.session.delete(reservation)
+            db.session.commit()
+
+            return make_response({"Successfully deleted": True}, 204)
+        else:
+            return make_response({"error": "No event was found"}, 404)
+
+
+api.add_resource(ReservationId, '/reservations/<int:id>')
+
+
 @app.route('/')
 def index():
     return '<h1>Project Server</h1>'

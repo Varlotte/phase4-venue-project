@@ -3,8 +3,9 @@ import { Card, Button } from "antd";
 
 const { Meta } = Card;
 
-function ReservationCard({ reservation }) {
+function ReservationCard({ reservation, handleDeleteClick }) {
   const { event, tickets } = reservation;
+  console.log(reservation);
 
   return (
     <Card
@@ -16,7 +17,12 @@ function ReservationCard({ reservation }) {
           style={{ "object-fit": "cover", height: "200px" }}
         />
       }
-      actions={[<Button>Update</Button>, <Button danger>Cancel</Button>]}
+      actions={[
+        <Button>Update</Button>,
+        <Button danger onClick={() => handleDeleteClick(reservation.id)}>
+          Cancel
+        </Button>,
+      ]}
     >
       <Meta title={event.name} description={event.description} />
       <p>
