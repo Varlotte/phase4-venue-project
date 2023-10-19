@@ -12,11 +12,11 @@ function EventCard({ event, selectEvent }) {
   const { Meta } = Card;
 
   function handleClick() {
-    selectEvent(event.id)
+    selectEvent(event.id);
   }
 
   return (
-    <div>   
+    <div>
       <Card
         onClick={handleClick}
         hoverable
@@ -25,7 +25,7 @@ function EventCard({ event, selectEvent }) {
           <img
             alt="example"
             src={event.image}
-            style={{ "object-fit": "cover", height: "200px" }}
+            style={{ objectFit: "cover", height: "200px" }}
           />
         }
         actions={
@@ -35,16 +35,25 @@ function EventCard({ event, selectEvent }) {
             // <EllipsisOutlined key="ellipsis" />,
           ]
         }
-      > 
+      >
         <Link to="/selectedEvent">
-        <Typography.Text style={{color: "black", fontSize: 20, fontWeight: "bold"}}>Event: {event.name}</Typography.Text>
-        
-        <br/>
-        <Typography.Text style={{color: "black", fontSize: 12}}>Description: {event.description}</Typography.Text>
-        <br/>
-        <br/>
-        <Meta className="cardDescriptions" description={"Date: " + event.event_date}/>
-        <Meta className="cardDescriptions" description={event.time + ":00"}/>
+          <Typography.Text
+            style={{ color: "black", fontSize: 20, fontWeight: "bold" }}
+          >
+            Event: {event.name}
+          </Typography.Text>
+
+          <br />
+          <Typography.Text style={{ color: "black", fontSize: 12 }}>
+            Description: {event.description}
+          </Typography.Text>
+          <br />
+          <br />
+          <Meta
+            className="cardDescriptions"
+            description={"Date: " + event.event_date}
+          />
+          <Meta className="cardDescriptions" description={event.time + ":00"} />
         </Link>
       </Card>
     </div>
