@@ -4,4 +4,6 @@ export function getCurrUser() {
   return window.sessionStorage.getItem("currentUser");
 }
 
-export const CurrentUserContext = createContext(null);
+export const CurrentUserContext = createContext(
+  window.sessionStorage.getItem("currentUser")
+);
