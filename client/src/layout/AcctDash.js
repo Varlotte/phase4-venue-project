@@ -47,6 +47,30 @@ function AcctDash() {
       );
   };
 
+  const handleRemoveClick = (reservationId, currTickets) => {
+    console.log(reservationId);
+    fetch(`/reservations/${reservationId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tickets: currTickets - 1 }),
+    })
+      .then(() => alert("PATCH Success"))
+      .then(() =>
+        setCurrentAttendee((prevData) => {
+          return {
+            ...prevData,
+            reservations: prevData.reservations.map((reservation) => {
+              if (reservation.id !== reservationId) return reservation;
+              return {
+                ...reservation,
+                tickets: currTickets - 1,
+              };
+            }),
+          };
+        })
+      );
+  };
+
   useEffect(() => {
     if (!id) return;
     fetch(`/attendees/${id}`)
@@ -75,6 +99,7 @@ function AcctDash() {
             reservation={reservation}
             handleDeleteClick={handleDeleteClick}
             handleAddClick={handleAddClick}
+            handleRemoveClick={handleRemoveClick}
           />
         ))}
       </Flex>
