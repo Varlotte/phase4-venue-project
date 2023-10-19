@@ -17,9 +17,9 @@ function EventForm() {
                 name: values.eventName,
                 description: values.description,
                 price: values.price,
-                event_date: values["date"].format("YYYY-MM-DD"),
-                time: parseInt(time),
-                location: "",
+                event_date: "2023-10-31",
+                time: 22,
+                location: "Venuuuu",
                 image: values.image
             })
         })
