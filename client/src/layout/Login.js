@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { CurrentUserContext } from "../Helperfuncs";
 
 const Login = () => {
   const history = useHistory();
+  const { setCurrentUser } = useContext(CurrentUserContext);
 
   return (
     <div>
@@ -41,6 +43,8 @@ const Login = () => {
                 console.log(data);
                 if (data.id) {
                   window.sessionStorage.setItem("currentUser", data.id);
+                  setCurrentUser(data.id);
+                  //this passes current user to context
                   //sets current logged in user id so any other component can use it
                   //user id for the rest of the app is going to be sessionStorage.getItem('currentUser')
                   history.push("/acctdash");
