@@ -7,6 +7,22 @@ function AcctDash() {
   const id = window.sessionStorage.getItem("currentUser");
   const [currentAttendee, setCurrentAttendee] = useState(null);
 
+  const handleDeleteClick = (reservationId) => {
+    console.log(reservationId);
+    fetch(`/reservations/${reservationId}`, { method: "DELETE" })
+      .then(() => alert("Delete successful"))
+      .then(() =>
+        setCurrentAttendee((prevData) => {
+          return {
+            ...prevData,
+            reservations: prevData.reservations.filter(
+              (reservation) => reservation.id !== reservationId
+            ),
+          };
+        })
+      );
+  };
+
   useEffect(() => {
     if (!id) return;
     fetch(`/attendees/${id}`)
@@ -30,7 +46,10 @@ function AcctDash() {
       <h2>Your current reservations are</h2>
       <Flex gap="middle">
         {currentAttendee.reservations.map((reservation) => (
-          <ReservationCard reservation={reservation} />
+          <ReservationCard
+            reservation={reservation}
+            handleDeleteClick={handleDeleteClick}
+          />
         ))}
       </Flex>
     </div>
