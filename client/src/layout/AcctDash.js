@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import ReservationCard from "../components/ReservationCard";
 import { Flex } from "antd";
+import { getCurrUser } from "../Helperfuncs";
 
 function AcctDash() {
-  const id = window.sessionStorage.getItem("currentUser");
+  const id = getCurrUser();
   const [currentAttendee, setCurrentAttendee] = useState(null);
 
   const handleDeleteClick = (reservationId) => {

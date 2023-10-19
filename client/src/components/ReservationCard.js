@@ -26,7 +26,10 @@ function ReservationCard({
         <Button onClick={() => handleAddClick(reservation.id, tickets)}>
           + Tickets
         </Button>,
-        <Button onClick={() => handleRemoveClick(reservation.id, tickets)}>
+        <Button
+          disabled={tickets <= 0}
+          onClick={() => handleRemoveClick(reservation.id, tickets)}
+        >
           - Tickets
         </Button>,
         <Button danger onClick={() => handleDeleteClick(reservation.id)}>
