@@ -77,7 +77,7 @@ class Reservation(db.Model, SerializerMixin):
     # adds validations for tickets
     @validates('tickets')
     def validate_tickets(self, key, tickets):
-        if tickets > 0:
+        if tickets is not 0:
             return tickets
         else:
             raise ValueError("Tickets must be greater than zero.")

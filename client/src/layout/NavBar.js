@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { getCurrUser } from "../Helperfuncs";
+import { CurrentUserContext } from "../Helperfuncs";
 
 function Navbar() {
-  const isLoggedIn = !!getCurrUser();
+  const { currentUser } = useContext(CurrentUserContext);
   return (
     <div className="navbar">
       <Link to="/contact-page">Contact Us</Link>
       <Link to="/signup">Sign Up</Link>
-      {!isLoggedIn ? (
+      {!currentUser ? (
         <Link to="/login">Log In</Link>
       ) : (
         <Link to="/acctdash"> My Account</Link>
