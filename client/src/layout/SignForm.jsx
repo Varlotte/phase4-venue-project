@@ -28,12 +28,12 @@ function SignForm() {
 
 
     return (
-        <Form
+      <Form
       name="normal_login"
       className="login-form"
       initialValues={{ remember: true }}
       onFinish={onFinish}
-    >
+      >
       <Form.Item
         name="firstname"
         rules={[{ required: true, message: 'First name required' }]}
