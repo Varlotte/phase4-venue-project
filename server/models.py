@@ -74,6 +74,14 @@ class Reservation(db.Model, SerializerMixin):
     def __repr__(self):
         return f'<Reservation count: {self.tickets}>'
 
+    # adds validations for tickets
+    @validates('tickets')
+    def validate_tickets(self, key, tickets):
+        if tickets > 0:
+            return tickets
+        else:
+            raise ValueError("Tickets must be greater than zero.")
+
 
 class Event(db.Model, SerializerMixin):
     __tablename__ = 'events'
@@ -85,7 +93,8 @@ class Event(db.Model, SerializerMixin):
     event_date = db.Column(db.Date)
     time = db.Column(db.Integer)
     location = db.Column(db.String, default='Main Venue')
-    image = db.Column(db.String, default = 'https://www.wric.com/wp-content/uploads/sites/74/2022/07/IMG_9274.jpeg?strip=1')
+    image = db.Column(
+        db.String, default='https://www.wric.com/wp-content/uploads/sites/74/2022/07/IMG_9274.jpeg?strip=1')
 
     # relationship with reservations
     reservations = db.relationship(
