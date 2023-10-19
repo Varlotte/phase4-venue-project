@@ -7,7 +7,7 @@ function EventsList({events, selectEvent}) {
 
 
     return (
-        <div id="Cards">
+        <div id="CardsContainer">
             {eventsCards}
         </div>
     )

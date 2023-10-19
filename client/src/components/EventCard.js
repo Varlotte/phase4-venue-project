@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import {
   EditOutlined,
   EllipsisOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import { Avatar, Card } from "antd";
+import { Avatar, Card, Typography } from "antd";
 
 function EventCard({ event, selectEvent }) {
   const { Meta } = Card;
@@ -15,10 +16,11 @@ function EventCard({ event, selectEvent }) {
   }
 
   return (
-    <div>
+    <div>   
       <Card
         onClick={handleClick}
-        style={{ height: 500, width: 300 }}
+        hoverable
+        style={{ height: 400, width: 300 }}
         cover={
           <img
             alt="example"
@@ -33,14 +35,17 @@ function EventCard({ event, selectEvent }) {
             // <EllipsisOutlined key="ellipsis" />,
           ]
         }
-      >
-        <div>
-          <h2>Event: {event.name}</h2>
-          <h3>Description: {event.description}</h3>
-          <h3>
-            Date: {event.event_date} Time: {event.time}:00
-          </h3>
-        </div>
+      > 
+        <Link to="/selectedEvent">
+        <Typography.Text style={{color: "black", fontSize: 20, fontWeight: "bold"}}>Event: {event.name}</Typography.Text>
+        
+        <br/>
+        <Typography.Text style={{color: "black", fontSize: 12}}>Description: {event.description}</Typography.Text>
+        <br/>
+        <br/>
+        <Meta className="cardDescriptions" description={"Date: " + event.event_date}/>
+        <Meta className="cardDescriptions" description={event.time + ":00"}/>
+        </Link>
       </Card>
     </div>
   );

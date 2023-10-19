@@ -3,11 +3,26 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Card} from 'antd'
 import { InputNumber } from 'antd';
 
-function ReservationForm() {
+function ReservationForm({eventId}) {
     const [ticketQuantity, setTicketQuantity] = useState(0)
 
     function handleSubmit(values) {
-       console.log(values)
+       console.log(values["quantity"])
+       console.log(eventId)
+       if (sessionStorage.getItem('currentUser')) {
+            fetch("/reservations",{
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    tickets: values["quantity"],
+                    attendee_id: sessionStorage.getItem('currentUser'),
+                    event_id: eventId
+                })
+            })
+            .then(res => res.json())
+            .then((reservation) => console.log(reservation))
+       }
+       
     }
     function handleChange(e) {
         console.log(e.target.value)
