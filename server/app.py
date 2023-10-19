@@ -212,7 +212,8 @@ class ReservationId(Resource):
             db.session.add(reservation)
             db.session.commit()
             return make_response(reservation.to_dict(rules=("-attendees",)), 202)
-        except ValueError:
+        except ValueError as e:
+            print(e)
             return make_response({"errors": ["validation errors"]}, 400)
 
 

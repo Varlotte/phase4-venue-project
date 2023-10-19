@@ -1,9 +1,9 @@
 import React from "react";
-import { Card, Button } from "antd";
+import { Card, Button, Icons } from "antd";
 
 const { Meta } = Card;
 
-function ReservationCard({ reservation, handleDeleteClick }) {
+function ReservationCard({ reservation, handleDeleteClick, handleAddClick }) {
   const { event, tickets } = reservation;
   console.log(reservation);
 
@@ -18,7 +18,10 @@ function ReservationCard({ reservation, handleDeleteClick }) {
         />
       }
       actions={[
-        <Button>Update</Button>,
+        <Button onClick={() => handleAddClick(reservation.id, tickets)}>
+          + Tickets
+        </Button>,
+        <Button>- Tickets</Button>,
         <Button danger onClick={() => handleDeleteClick(reservation.id)}>
           Cancel
         </Button>,
