@@ -14,7 +14,7 @@ function ReservationCard({ reservation, handleDeleteClick }) {
         <img
           alt="example"
           src={event.image}
-          style={{ "object-fit": "cover", height: "200px" }}
+          style={{ objectFit: "cover", height: "200px" }}
         />
       }
       actions={[

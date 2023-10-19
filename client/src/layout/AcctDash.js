@@ -47,6 +47,7 @@ function AcctDash() {
       <Flex gap="middle">
         {currentAttendee.reservations.map((reservation) => (
           <ReservationCard
+            key={reservation.id}
             reservation={reservation}
             handleDeleteClick={handleDeleteClick}
           />
