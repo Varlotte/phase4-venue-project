@@ -119,12 +119,16 @@ class Events(Resource):
 
     def post(self):
         data = request.json
+        # import ipdb; ipdb.set_trace()
+        if data["event_date"]:
+            received_date = data["event_date"].split("-")
+            fixed_date = date(int(received_date[0]), int(received_date[1]), int(received_date[2]))
         try:
             new_event = Event(
                 name=data["name"],
                 description=data["description"],
                 price=data["price"],
-                event_date=data['event_date'],
+                event_date=fixed_date,
                 time=data["time"],
                 location=data["location"],
                 image=data["image"]
