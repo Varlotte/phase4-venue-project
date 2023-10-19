@@ -3,7 +3,12 @@ import { Card, Button, Icons } from "antd";
 
 const { Meta } = Card;
 
-function ReservationCard({ reservation, handleDeleteClick, handleAddClick }) {
+function ReservationCard({
+  reservation,
+  handleDeleteClick,
+  handleAddClick,
+  handleRemoveClick,
+}) {
   const { event, tickets } = reservation;
   console.log(reservation);
 
@@ -21,7 +26,9 @@ function ReservationCard({ reservation, handleDeleteClick, handleAddClick }) {
         <Button onClick={() => handleAddClick(reservation.id, tickets)}>
           + Tickets
         </Button>,
-        <Button>- Tickets</Button>,
+        <Button onClick={() => handleRemoveClick(reservation.id, tickets)}>
+          - Tickets
+        </Button>,
         <Button danger onClick={() => handleDeleteClick(reservation.id)}>
           Cancel
         </Button>,
