@@ -190,3 +190,9 @@
   display: flex;
   justify-content: center;
 }
+
+#NeedLogin {
+  color: red;
+  display: flex;
+  justify-content: center;
+}

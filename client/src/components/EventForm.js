@@ -2,8 +2,11 @@ import React from "react";
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, DatePicker} from 'antd'
 import {useState} from 'react';
+import { Link } from "react-router-dom";
 
 function EventForm({addCreatedEvent}) {
+    const loggedIn = sessionStorage.getItem('currentUser')
+
     const onFinish = (values) => {
         console.log(values)
         const time = values.time.split(":")[0]
@@ -29,6 +32,8 @@ function EventForm({addCreatedEvent}) {
 
 
     return (
+    <div>
+        {loggedIn? <></>: <h2 id="NeedLogin">Please Log into your account to Host an Event</h2>}
     <Form
       name="normal_login"
       className="login-form"
@@ -91,11 +96,11 @@ function EventForm({addCreatedEvent}) {
         </Form.Item>
 
         <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button">
-            Register Your Event
-            </Button>
+        {loggedIn? <Button type="primary" htmlType="submit" className="login-form-button">Register Your Event</Button>: <Link to="/login"><Button type="primary" htmlType="submit" className="login-form-button">Register Your Event</Button></Link>}
+            
         </Form.Item>
     </Form>
+    </div>
   );
 }
 

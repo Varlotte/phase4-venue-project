@@ -5,7 +5,7 @@ import { Typography } from "antd";
 
 
 function AddEvent({addCreatedEvent}) {
-
+    
     return (
         // <h1>Contact page!</h1>
         <div>
