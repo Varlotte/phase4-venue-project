@@ -1,25 +1,43 @@
-import React, { useEffect, useState } from "react";
-import EventsList from "../components/EventsList";
-import FullEventCard from "../components/FullEventCard";
-import RestfulImage from "../layout/RestfulImage.jpg";
-import { Layout, Space } from 'antd';
+import React, {useRef, useEffect} from "react";
+import {Link} from 'react-router-dom';
+import Welcome from "./Welcome";
+import '../layout/Home.css'
 
-function Home({ events, selectEvent, currentEvent }) {
-  console.log(currentEvent);
+function Home() {
+  
+
+  const aboutScroll = useRef(null)
+
+  useEffect(() => {
+    const element = aboutScroll.current;
+    console.log(element); // 👈️ element here
+  }, []);
+
+    const scrollToSection = (elementRef) => {
+        window.scrollTo({
+      top: elementRef.current.offsetTop,
+            behavior: 'smooth'
+        })
+    }
+
+
   return (
     <div>
-      <div className="navbarImageContainer">
-        <img className="navbarImage" src="https://storage.googleapis.com/cms-org.media.aegpresents.com/venue-rentals/share-images/venues/the-novo-venue.jpg" alt="Fun Night Event"/>
+      <div className="middle">
+        <Link to="/home" className="homeBtn">
+          <button className="homeBtn">Welcome</button>
+        </Link>
       </div>
-    <div id="homeLayout">
-      <h1>Upcoming Events:</h1>
-      <EventsList events={events} selectEvent={selectEvent} />
-    </div>
+      <div className="scroll">
+          <h1 onClick={() => scrollToSection(aboutScroll)}>About us.</h1>
+      </div>
+      <div className="about" ref={aboutScroll}>
+        <Welcome />
+      </div>
     </div>
   );
 }
 
 export default Home;
-
 
 // https://i.pinimg.com/1200x/74/7f/10/747f1000729a3263510333c60b21df00.jpg

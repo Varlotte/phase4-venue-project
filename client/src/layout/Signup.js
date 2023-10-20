@@ -3,6 +3,7 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Layout, Space } from 'antd';
 import SignForm from "./SignForm";
 import Content from "./Content";
+import Navbar from "./NavBar";
 
 
 function Signup() {
@@ -10,6 +11,8 @@ function Signup() {
   
 
   return (
+    <>
+    <Navbar />
     <Space>
       <Layout className='signup-layout-sider' direction="horizontal" size='medium'>
         <h1 
@@ -24,6 +27,7 @@ function Signup() {
       </Layout>
     
   </Space>
+  </>
   );
 }
 

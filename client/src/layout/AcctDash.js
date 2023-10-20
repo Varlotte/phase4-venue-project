@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import ReservationCard from "../components/ReservationCard";
-import { Flex } from "antd";
+import { Flex, Typography } from "antd";
 import { getCurrUser } from "../Helperfuncs";
+import Navbar from "./NavBar";
 
 function AcctDash() {
   const id = getCurrUser();
@@ -90,20 +91,50 @@ function AcctDash() {
 
   return (
     <div>
-      <h1>Welcome to your dashboard, {currentAttendee.name}!</h1>
-      <h2>Your email on file is {currentAttendee.email}</h2>
-      <h2>Your current reservations are</h2>
-      <Flex gap="middle">
-        {currentAttendee.reservations.map((reservation) => (
-          <ReservationCard
-            key={reservation.id}
-            reservation={reservation}
-            handleDeleteClick={handleDeleteClick}
-            handleAddClick={handleAddClick}
-            handleRemoveClick={handleRemoveClick}
-          />
+      <Navbar/>
+      <div className="AccountPage">
+        <Typography.Text
+        style={{ color: "black", fontSize: 25, fontWeight: "bold" }}
+        >Welcome to your dashboard, {currentAttendee.name}!</Typography.Text>
+        
+        <br/>
+        <br/>
+
+        <div className = "AccountDetails">
+          <Typography.Text
+          style={{ color: "black", fontSize: 20, fontWeight: "bold" }}
+          >Account Details:</Typography.Text>
+          <br/>
+          <Typography.Text
+          style={{ color: "black", fontSize: 15, }}
+          >Current email: {currentAttendee.email}</Typography.Text>
+          <br/>
+          <Typography.Text
+          style={{ color: "black", fontSize: 15, }}
+          >You currently have {currentAttendee.reservations.length} event/s scheduled</Typography.Text>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+      </div>
+        <div className="PersaonalReservationsTitle">
+          <Typography.Text
+          style={{ color: "black", fontSize: 20, fontWeight: "bold" }}
+          >Reserved Events:</Typography.Text>
+        </div>
+      {/* <Flex gap="middle"> */}
+        <div className="PersonalReservations">
+          {currentAttendee.reservations.map((reservation) => (
+            <ReservationCard
+              key={reservation.id}
+              reservation={reservation}
+              handleDeleteClick={handleDeleteClick}
+              handleAddClick={handleAddClick}
+              handleRemoveClick={handleRemoveClick}
+            />
         ))}
-      </Flex>
+        </div>
+      {/* </Flex> */}
     </div>
   );
 }

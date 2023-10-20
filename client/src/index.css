@@ -148,3 +148,45 @@
 .contentAboutUs {
   background-color: white;
 }
+.section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.main-heading {
+  color: #19054a;
+  font-size: 20px;
+}
+
+.underline {
+  height: 0px;
+  width: 4rem;
+  background-color: #61dafb;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.AccountPage {
+  display: flex;
+  margin: 10px;
+}
+
+.AccountDetails {
+  align-items: flex-end;
+  margin-left: auto;
+  border: 5px solid black;
+  padding: 10px;
+}
+
+.PersaonalReservationsTitle {
+  margin: 10px;
+}
+.PersonalReservations {
+  padding: 20px;
+  gap: 5px;
+  margin: 10px;
+}
+.HostEventTitle {
+  display: flex;
+  justify-content: center;
+}

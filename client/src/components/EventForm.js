@@ -3,13 +3,13 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, DatePicker} from 'antd'
 import {useState} from 'react';
 
-
-function EventForm() {
+function EventForm({addCreatedEvent}) {
     const onFinish = (values) => {
         console.log(values)
         const time = values.time.split(":")[0]
-        console.log(time)
-        console.log(values["date"].format("YYYY-MM-DD"))
+        const date = values["date"].format("YYYY-MM-DD")
+        // console.log(time)
+        // console.log(values["date"].format("YYYY-MM-DD"))
         fetch("/events", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -17,14 +17,13 @@ function EventForm() {
                 name: values.eventName,
                 description: values.description,
                 price: values.price,
-                event_date: "2023-10-31",
-                time: 22,
-                location: "Venuuuu",
+                event_date: date,
+                time: parseInt(time),
                 image: values.image
             })
         })
         .then(res => res.json())
-        .then(event => console.log(event))
+        .then(event => addCreatedEvent(event))
   };
 
 
@@ -93,7 +92,7 @@ function EventForm() {
 
         <Form.Item>
             <Button type="primary" htmlType="submit" className="login-form-button">
-            Sign up
+            Register Your Event
             </Button>
         </Form.Item>
     </Form>
