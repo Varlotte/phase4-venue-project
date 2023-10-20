@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, Card} from 'antd'
+import { Button, Checkbox, Form, Input, Card, message} from 'antd'
 import { InputNumber } from 'antd';
 import { Link } from "react-router-dom";
 import { BsDisplay } from "react-icons/bs";
@@ -8,6 +8,14 @@ import { BsDisplay } from "react-icons/bs";
 function ReservationForm({eventId, selectedEvent}) {
     const [ticketQuantity, setTicketQuantity] = useState(0)
     const loggedIn = sessionStorage.getItem('currentUser')
+    const [messageApi, contextHolder] = message.useMessage();
+
+    const success = () => {
+        messageApi.open({
+          type: 'success',
+          content: `Tickets purchased. View in Dashboard`,
+        });
+      };
 
     function handleSubmit(values) {
        console.log(values["quantity"])
@@ -60,7 +68,7 @@ function ReservationForm({eventId, selectedEvent}) {
 
             <Form.Item>
                 
-                {loggedIn? <Button type="primary" htmlType="submit" className="login-form-button">Check Out</Button>: <Link to="/login"><Button type="primary" htmlType="submit" className="login-form-button">Check Out</Button></Link>}
+                {loggedIn? <Button type="primary" htmlType="submit" onClick= {success} className="login-form-button">Check Out</Button>: <Link to="/login"><Button type="primary" htmlType="submit" className="login-form-button">Check Out</Button></Link>}
             
             </Form.Item>
             {/* <div>

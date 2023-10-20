@@ -35,13 +35,6 @@ function SignForm() {
     });
   };
 
-  const error = () => {
-    messageApi.open({
-      type: 'error',
-      content: 'Error creating profile',
-    });
-  };
-
 
     return (
         <>
@@ -100,8 +93,9 @@ function SignForm() {
             type="primary" 
             htmlType="submit" 
             className="login-form-button" >
-            Sign up
-            </Button>
+
+            <Link to="/login">Signup</Link>
+            </Button >
             Or <Link to = '/login'>Already have an account?</Link>
         </Form.Item>
         </Form>
