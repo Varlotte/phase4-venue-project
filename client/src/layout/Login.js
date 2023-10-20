@@ -2,14 +2,25 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { message } from "antd";
 import { CurrentUserContext } from "../Helperfuncs";
+import Navbar from "./NavBar";
+
 
 const Login = () => {
   const history = useHistory();
   const { setCurrentUser } = useContext(CurrentUserContext);
+  const [messageApi, contextHolder] = message.useMessage();
 
+  const success = () => {
+    messageApi.open({
+      type: 'success',
+      content: `Login Successful`,
+    });
+  };
   return (
     <div>
+      <Navbar />
       <h1
         style={{
           margin: "10px 10px",
@@ -84,6 +95,7 @@ const Login = () => {
               width: "200px",
               margin: "10px 15px",
             }}
+            onClick={success}
           >
             Submit
           </button>

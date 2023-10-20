@@ -105,3 +105,21 @@
 .cardDescriptions {
   color: black;
 }
+
+.section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.main-heading {
+  color: #19054a;
+  font-size: 20px;
+}
+
+.underline {
+  height: 0px;
+  width: 4rem;
+  background-color: #61dafb;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
