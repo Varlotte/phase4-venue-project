@@ -1,10 +1,21 @@
 import React, { useState } from "react";
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input, Card} from 'antd'
+import { Button, Checkbox, Form, Input, Card, message} from 'antd'
 import { InputNumber } from 'antd';
+import { Link } from "react-router-dom";
+import { BsDisplay } from "react-icons/bs";
 
-function ReservationForm({eventId}) {
+function ReservationForm({eventId, selectedEvent}) {
     const [ticketQuantity, setTicketQuantity] = useState(0)
+    const loggedIn = sessionStorage.getItem('currentUser')
+    const [messageApi, contextHolder] = message.useMessage();
+
+    const success = () => {
+        messageApi.open({
+          type: 'success',
+          content: `Tickets purchased. View in Dashboard`,
+        });
+      };
 
     function handleSubmit(values) {
        console.log(values["quantity"])
@@ -32,6 +43,7 @@ function ReservationForm({eventId}) {
 
     return (
         <div>
+            {loggedIn? <></>: <h2 id="NeedLogin">Please Log into your account to buy Tickets to this Event</h2>}
             <Form
                 name="normal_login"
                 className="login-form"
@@ -39,8 +51,8 @@ function ReservationForm({eventId}) {
                 onFinish = {handleSubmit}
             >
             <Form.Item>
-                <h1>Event Name</h1>
-                <label>Decmber 20th 2023</label>
+                <h1>Reserve Event Tickets</h1>
+                <label>Event Date: {selectedEvent.event_date}</label>
             </Form.Item>
             <Form.Item
                 name = "quantity"
@@ -55,13 +67,13 @@ function ReservationForm({eventId}) {
             </Form.Item>
 
             <Form.Item>
-                <Button type="primary" htmlType="submit" className="login-form-button">
-                Check Out
-                </Button>
+                
+                {loggedIn? <Button type="primary" htmlType="submit" onClick= {success} className="login-form-button">Check Out</Button>: <Link to="/login"><Button type="primary" htmlType="submit" className="login-form-button">Check Out</Button></Link>}
+            
             </Form.Item>
-            <div>
+            {/* <div>
                 <h1>Insert Image?</h1>
-            </div>
+            </div> */}
             </Form>
         </div>
     )

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Avatar, Card } from 'antd';
 import ReservationForm from "./ReservationForm";
+import Navbar from "../layout/NavBar";
+
 
 function FullEventCard({selectedEvent}) {
     console.log(selectedEvent)
     return (
-        <div class = "Card"> 
+        <div class = "Card">
+            <Navbar/> 
             <Card
                 style={{}}
                 cover={
@@ -28,7 +31,7 @@ function FullEventCard({selectedEvent}) {
                     </h4>
                 </div>
             </Card>
-            <ReservationForm eventId={selectedEvent.id}/>
+            <ReservationForm eventId={selectedEvent.id} selectedEvent = {selectedEvent}/>
         </div>
     )
 }

@@ -130,7 +130,6 @@ class Events(Resource):
                 price=data["price"],
                 event_date=fixed_date,
                 time=data["time"],
-                location=data["location"],
                 image=data["image"]
             )
 

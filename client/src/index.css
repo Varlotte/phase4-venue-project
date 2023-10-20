@@ -6,19 +6,27 @@
 }
 
 #CardsContainer {
-  /* display: grid;
+  display: grid;
   grid-template-columns: repeat(4, 1fr);
-  justify-content: center;
-  padding: 30px;
-  gap: 15px; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 30px;
   gap: 5px;
-  overflow-x: auto;
   
 }
 
+/* .eventCard {
+  margin-top: 20px;
+  background-color: red;
+} */
+
+.eventCardAnt {
+  margin-top: 20px;
+  margin-left: 30px;
+  padding: 0px;
+  justify-content: center;
+  background-color: #f9f3ea;
+  width: 100%;
+  object-fit: cover;
+}
 
 /* Navbar */
 .navbar {
@@ -41,6 +49,18 @@
 .navbar a:hover {
   background-color: #ddd;
   color: #19054a;
+}
+
+.navbarImageContainer {
+  border-top: 5px solid black;
+  border-bottom: 1px solid black;
+  height: 200px;
+}
+
+.navbarImage {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .login-form {
@@ -104,4 +124,76 @@
 
 .cardDescriptions {
   color: black;
+}
+
+#homeLayout {
+  justify-content: center;
+  margin: 30px;
+}
+.homeContent {
+  margin-top: 50px;
+  background-color: #19054a;
+  border: 10px solid black;
+}
+
+.contentTitle {
+  background-color: white;
+}
+.homeImage {
+  background-color: #61dafb;
+  height: 200px;
+  width: 100%;
+}
+
+.contentAboutUs {
+  background-color: white;
+}
+.section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.main-heading {
+  color: #19054a;
+  font-size: 20px;
+}
+
+.underline {
+  height: 0px;
+  width: 4rem;
+  background-color: #61dafb;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.AccountPage {
+  display: flex;
+  margin: 10px;
+}
+
+.AccountDetails {
+  align-items: flex-end;
+  margin-left: auto;
+  border: 5px solid black;
+  padding: 10px;
+}
+
+.PersaonalReservationsTitle {
+  margin: 10px;
+}
+.PersonalReservations {
+  padding: 20px;
+  gap: 5px;
+  margin: 10px;
+  display: flex;
+}
+.HostEventTitle {
+  display: flex;
+  justify-content: center;
+}
+
+#NeedLogin {
+  color: red;
+  display: flex;
+  justify-content: center;
 }

@@ -2,14 +2,17 @@ import React from "react";
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, DatePicker} from 'antd'
 import {useState} from 'react';
+import { Link } from "react-router-dom";
 
+function EventForm({addCreatedEvent}) {
+    const loggedIn = sessionStorage.getItem('currentUser')
 
-function EventForm() {
     const onFinish = (values) => {
         console.log(values)
         const time = values.time.split(":")[0]
-        console.log(time)
-        console.log(values["date"].format("YYYY-MM-DD"))
+        const date = values["date"].format("YYYY-MM-DD")
+        // console.log(time)
+        // console.log(values["date"].format("YYYY-MM-DD"))
         fetch("/events", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -17,19 +20,20 @@ function EventForm() {
                 name: values.eventName,
                 description: values.description,
                 price: values.price,
-                event_date: "2023-10-31",
-                time: 22,
-                location: "Venuuuu",
+                event_date: date,
+                time: parseInt(time),
                 image: values.image
             })
         })
         .then(res => res.json())
-        .then(event => console.log(event))
+        .then(event => addCreatedEvent(event))
   };
 
 
 
     return (
+    <div>
+        {loggedIn? <></>: <h2 id="NeedLogin">Please Log into your account to Host an Event</h2>}
     <Form
       name="normal_login"
       className="login-form"
@@ -92,11 +96,11 @@ function EventForm() {
         </Form.Item>
 
         <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button">
-            Sign up
-            </Button>
+        {loggedIn? <Button type="primary" htmlType="submit" className="login-form-button">Register Your Event</Button>: <Link to="/login"><Button type="primary" htmlType="submit" className="login-form-button">Register Your Event</Button></Link>}
+            
         </Form.Item>
     </Form>
+    </div>
   );
 }
 

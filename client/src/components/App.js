@@ -3,9 +3,9 @@ import React, { useEffect, useState, createContext } from "react";
 //CHANGED Switch to Routes - Sergio 10/17
 //changed it back to switch because routes is legacy code and it wasn't running- charlotte 10/17
 import { BrowserRouter, Switch, Route, useHistory } from "react-router-dom";
-import Navbar from "../layout/NavBar";
+import HomePage from "../layout/HomePage";
 import Home from "../layout/Home";
-import Contact from "../layout/Contact";
+import AddEvent from "../layout/AddEvent";
 import Signup from "../layout/Signup";
 import Login from "../layout/Login";
 import AcctDash from "../layout/AcctDash";
@@ -44,6 +44,10 @@ function App() {
       });
   }
 
+  function addCreatedEvent(newEvent) {
+    setEventsList([...eventsList, newEvent])
+  }
+  console.log(sessionStorage.getItem('currentUser'))
   return (
     <div>
       <CurrentUserContext.Provider
@@ -53,7 +57,7 @@ function App() {
         }}
       >
         <BrowserRouter>
-          <Navbar />
+          {/* <Navbar /> */}
           <Switch>
             <Route path="/selectedEvent">
               <FullEventCard selectedEvent={currentEvent} />
@@ -61,8 +65,8 @@ function App() {
             <Route path="/signup">
               <Signup />
             </Route>
-            <Route path="/contact-page">
-              <Contact />
+            <Route path="/add-event">
+              <AddEvent addCreatedEvent={addCreatedEvent} />
             </Route>
             <Route path="/login">
               <Login />
@@ -70,12 +74,13 @@ function App() {
             <Route path="/acctdash">
               <AcctDash />
             </Route>
-            <Route path="/">
-              <Home
-                events={eventsList}
+            <Route path="/home">
+              <HomePage events={eventsList}
                 selectEvent={selectEvent}
-                currentEvent={currentEvent}
-              />
+                currentEvent={currentEvent}/>
+            </Route>
+            <Route path="/">
+              <Home />
             </Route>
           </Switch>
         </BrowserRouter>

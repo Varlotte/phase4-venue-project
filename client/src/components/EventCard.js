@@ -16,8 +16,8 @@ function EventCard({ event, selectEvent }) {
   }
 
   return (
-    <div>
-      <Card
+    
+      <Card className="eventCardAnt"
         onClick={handleClick}
         hoverable
         style={{ height: 400, width: 300 }}
@@ -56,7 +56,7 @@ function EventCard({ event, selectEvent }) {
           <Meta className="cardDescriptions" description={event.time + ":00"} />
         </Link>
       </Card>
-    </div>
+   
   );
 }
 
