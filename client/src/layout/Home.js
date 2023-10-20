@@ -2,33 +2,24 @@ import React, { useEffect, useState } from "react";
 import EventsList from "../components/EventsList";
 import FullEventCard from "../components/FullEventCard";
 import RestfulImage from "../layout/RestfulImage.jpg";
+import { Layout, Space } from 'antd';
 
 function Home({ events, selectEvent, currentEvent }) {
   console.log(currentEvent);
   return (
     <div>
-      <h1>Welcome to the Restful!</h1>
-      <EventsList events={events} selectEvent={selectEvent} />
-      <div style={{ justifyContent: "center", maxWidth: "80%" }}>
-        <h4>About Us</h4>
-        <img
-          src={RestfulImage}
-          alt="a pic of our venue"
-          style={{
-            height: "200px",
-            width: "200px",
-          }}
-        />
-        <p>
-          Welcome to the Restful! Founded in 1980 by a collective of backend
-          engineers, this versatile venue has it all- a main stage, private
-          booths, VIP area, and a full-service kitchen! Easily accessible on all
-          major routes and ADA compatible so everyone can have a good time. Come
-          to one of our events, or host your own with us!
-        </p>
+      <div className="navbarImageContainer">
+        <img className="navbarImage" src="https://storage.googleapis.com/cms-org.media.aegpresents.com/venue-rentals/share-images/venues/the-novo-venue.jpg" alt="Fun Night Event"/>
       </div>
+    <div id="homeLayout">
+      <h1>Upcoming Events:</h1>
+      <EventsList events={events} selectEvent={selectEvent} />
+    </div>
     </div>
   );
 }
 
 export default Home;
+
+
+// https://i.pinimg.com/1200x/74/7f/10/747f1000729a3263510333c60b21df00.jpg
